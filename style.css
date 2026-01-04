@@ -1,0 +1,119 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Body */
+body {
+  background: linear-gradient(135deg, #1d2671, #c33764);
+  color: #fff;
+  min-height: 100vh;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.header h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.header p {
+  font-size: 18px;
+  opacity: 0.9;
+}
+
+/* Team Section */
+.team {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+  padding: 40px 20px;
+}
+
+/* Cards */
+.card {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 25px;
+  width: 230px;
+  text-align: center;
+  border-radius: 12px;
+  transition: transform 0.3s, background 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.card h2 {
+  margin-bottom: 10px;
+}
+
+.card p {
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+.card a {
+  text-decoration: none;
+  color: #fff;
+  background: #000;
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+/* Profile Page */
+.profile {
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.profile-card {
+  background: rgba(255, 255, 255, 0.15);
+  max-width: 600px;
+  padding: 30px;
+  border-radius: 15px;
+}
+
+.profile-card h2 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.profile-card ul {
+  margin-left: 20px;
+}
+
+.profile-card li {
+  margin-bottom: 6px;
+}
+
+/* Back link */
+.back-link {
+  display: inline-block;
+  margin-top: 25px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+}
+
+/* Footer */
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+  opacity: 0.8;
+}
