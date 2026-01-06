@@ -24,11 +24,18 @@ body {
   background-color: #1f2933;
   color: #fff;
   padding: 40px 25px;
+  transition: background-color 0.3s ease;
 }
 
 .sidebar h1 {
   font-size: 32px;
   margin-bottom: 5px;
+  transition: letter-spacing 0.3s ease;
+}
+
+/* subtle name motion */
+.sidebar:hover h1 {
+  letter-spacing: 1px;
 }
 
 .role {
@@ -42,12 +49,19 @@ body {
   margin-bottom: 10px;
 }
 
+/* Home link */
 .home-link {
   display: inline-block;
   margin-top: 30px;
   color: #fff;
   text-decoration: none;
   font-weight: bold;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.home-link:hover {
+  transform: translateX(6px);
+  opacity: 0.8;
 }
 
 /* Content */
@@ -56,10 +70,18 @@ body {
   padding: 50px;
 }
 
+/* Sections */
 .content section {
   margin-bottom: 40px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
+/* soft lift on hover */
+.content section:hover {
+  transform: translateY(-6px);
+}
+
+/* Section titles */
 .content h2 {
   font-size: 24px;
   margin-bottom: 15px;
@@ -81,6 +103,13 @@ body {
   padding: 10px;
   border-radius: 6px;
   font-size: 14px;
+  transition: transform 0.25s ease, background-color 0.25s ease;
+}
+
+/* skill hover feedback */
+.skills li:hover {
+  transform: scale(1.04);
+  background-color: #d4dee6;
 }
 
 /* Projects */
@@ -95,6 +124,13 @@ body {
   padding: 20px;
   border-radius: 10px;
   border-left: 5px solid #1f2933;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* project card hover */
+.project:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
 }
 
 .project h3 {
@@ -111,4 +147,5 @@ body {
   border-top: 1px solid #334155;
   font-size: 14px;
   color: #94a3b8;
+  background-color: #f4f6f8;
 }

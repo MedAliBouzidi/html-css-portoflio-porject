@@ -8,91 +8,623 @@
 
 /* Body */
 body {
-  background-color: #0f172a;
+  /* Gradient background: dark slate at 135deg angle (#0f172a = dark navy, #1e293b = slightly lighter slate) */
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  /* Light gray text color (#e5e7eb) for good contrast on dark background */
   color: #e5e7eb;
+  /* Minimum 100% viewport height to cover full screen */
+  min-height: 100vh;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  /* Full width and height overlay using inset shorthand */
+  inset: 0;
+  /* Two radial gradient circles for ambient lighting effect */
+  background-image: 
+    radial-gradient(circle at 20% 50%, rgba(56, 189, 248, 0.1), transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.1), transparent 50%);
+  /* Prevent overlay from blocking mouse events */
+  pointer-events: none;
+  /* Stack below content */
+  z-index: 0;
+}
+
+body > * {
+  position: relative;
+  /* Stack above background overlay */
+  z-index: 1;
 }
 
 /* Header */
 .header {
-  border-bottom: 1px solid #334155;
-  padding: 30px 20px;
+  /* 2px solid border, slate gray color (#334155) */
+  border-bottom: 2px solid #334155;
+  /* 40px top/bottom, 20px left/right padding for spacing */
+  padding: 40px 20px;
+  /* Gradient from dark navy with 80% opacity to slate with 90% opacity */
+  background: linear-gradient(to bottom, rgba(2, 6, 23, 0.8), rgba(15, 23, 42, 0.9));
+  /* 10px blur for glassmorphism effect */
+  backdrop-filter: blur(10px);
 }
 
-.header h1 {
-  font-size: 32px;
+.header-content {
+  /* Maximum width 900px to contain content on large screens */
+  max-width: 900px;
+  /* Center horizontally, 20px bottom margin for spacing */
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  /* 25px gap between avatar and text */
+  gap: 25px;
 }
 
-.header p {
+.profile-badge {
+  position: relative;
+}
+
+.avatar {
+  /* 80x80px circular avatar */
+  width: 80px;
+  height: 80px;
+  /* 50% border radius makes it circular */
+  border-radius: 50%;
+  /* Cyan gradient at 135deg (#38bdf8 to #7dd3fc) */
+  background: linear-gradient(135deg, #38bdf8, #7dd3fc);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* 28px font size for initials */
+  font-size: 28px;
+  font-weight: bold;
+  /* Dark navy text (#020617) */
+  color: #020617;
+  /* Cyan glow effect: 30px blur, 30% opacity */
+  box-shadow: 0 0 30px rgba(56, 189, 248, 0.3);
+  /* 3 second pulsing animation that repeats infinitely */
+  animation: pulse 3s infinite;
+}
+
+@keyframes pulse {
+  /* Start and end with 30px glow at 30% opacity */
+  0%, 100% { box-shadow: 0 0 30px rgba(56, 189, 248, 0.3); }
+  /* Middle: 40px glow at 60% opacity for pulsing effect */
+  50% { box-shadow: 0 0 40px rgba(56, 189, 248, 0.6); }
+}
+
+.status-indicator {
+  position: absolute;
+  /* Position 5px from bottom-right corner */
+  bottom: 5px;
+  right: 5px;
+  /* 16x16px circular indicator */
+  width: 16px;
+  height: 16px;
+  /* Green color (#10b981) for "online" status */
+  background: #10b981;
+  border-radius: 50%;
+  /* 3px dark navy border (#0f172a) to separate from avatar */
+  border: 3px solid #0f172a;
+  /* 2 second blinking animation that repeats infinitely */
+  animation: blink 2s infinite;
+}
+
+@keyframes blink {
+  /* Start and end fully visible */
+  0%, 100% { opacity: 1; }
+  /* Middle: 50% opacity for blinking effect */
+  50% { opacity: 0.5; }
+}
+
+.header-text h1 {
+  /* 36px large heading text */
+  font-size: 36px;
+  /* 5px bottom margin */
+  margin-bottom: 5px;
+  /* Gradient text: cyan to light cyan (#38bdf8 to #7dd3fc) at 135deg */
+  background: linear-gradient(135deg, #38bdf8, #7dd3fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.header-text .role {
+  /* Slate gray color (#94a3b8) for subtitle */
   color: #94a3b8;
-  margin: 5px 0 15px;
+  /* 10px bottom margin, 16px font size */
+  margin-bottom: 10px;
+  font-size: 16px;
 }
 
-.header a {
+.tags {
+  display: flex;
+  /* 8px gap between tags */
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.tag {
+  /* Cyan background at 10% opacity with cyan border */
+  background: rgba(56, 189, 248, 0.1);
+  border: 1px solid #38bdf8;
+  /* 4px top/bottom, 12px left/right padding */
+  padding: 4px 12px;
+  /* 20px border radius for pill shape */
+  border-radius: 20px;
+  /* Small 12px font size */
+  font-size: 12px;
+  /* Light cyan text (#7dd3fc) */
+  color: #7dd3fc;
+  /* 0.3 second smooth transition for all properties */
+  transition: all 0.3s;
+}
+
+.tag:hover {
+  /* Darker cyan background at 20% opacity on hover */
+  background: rgba(56, 189, 248, 0.2);
+  /* Move up 2px on hover */
+  transform: translateY(-2px);
+}
+
+.back-btn {
+  /* Maximum 900px width to match container */
+  max-width: 900px;
+  margin: 0 auto;
+  display: inline-block;
+  /* Cyan text color (#38bdf8) */
   color: #38bdf8;
   text-decoration: none;
+  /* 8px top/bottom, 16px left/right padding */
+  padding: 8px 16px;
+  /* Cyan border */
+  border: 1px solid #38bdf8;
+  /* 6px rounded corners */
+  border-radius: 6px;
+  /* 0.3 second smooth transition */
+  transition: all 0.3s;
+}
+
+.back-btn:hover {
+  /* Cyan background at 10% opacity on hover */
+  background: rgba(56, 189, 248, 0.1);
+  /* Move left 5px on hover */
+  transform: translateX(-5px);
 }
 
 /* Main */
 .container {
+  /* Maximum 900px width to match header and keep content readable */
   max-width: 900px;
+  /* 40px top/bottom margin, auto left/right to center horizontally */
   margin: 40px auto;
+  /* 0 top/bottom, 20px left/right padding for mobile spacing */
   padding: 0 20px;
 }
 
 /* Blocks */
 .block {
+  /* 1px solid slate gray border (#334155) */
   border: 1px solid #334155;
-  padding: 25px;
+  /* 30px padding all around for content spacing */
+  padding: 30px;
+  /* 30px bottom margin to separate blocks */
   margin-bottom: 30px;
-  border-radius: 8px;
-  background-color: #020617;
+  /* 12px rounded corners */
+  border-radius: 12px;
+  /* Gradient background: dark navy at 60% opacity to slate at 40% opacity */
+  background: linear-gradient(135deg, rgba(2, 6, 23, 0.6), rgba(15, 23, 42, 0.4));
+  /* 10px blur for glassmorphism effect */
+  backdrop-filter: blur(10px);
+  /* Shadow: 0 horizontal, 4px vertical, 20px blur, black at 30% opacity */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  /* 0.3 second transition for hover effects */
+  transition: all 0.3s;
+  /* 0.6 second fade-in animation when block appears */
+  animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    /* Start invisible */
+    opacity: 0;
+    /* Start 20px below final position */
+    transform: translateY(20px);
+  }
+  to {
+    /* End fully visible */
+    opacity: 1;
+    /* End at final position */
+    transform: translateY(0);
+  }
+}
+
+.block:hover {
+  /* Change border to cyan (#38bdf8) on hover */
+  border-color: #38bdf8;
+  /* Larger shadow on hover: 8px vertical, 30px blur, cyan at 20% opacity */
+  box-shadow: 0 8px 30px rgba(56, 189, 248, 0.2);
+  /* Move up 5px on hover */
+  transform: translateY(-5px);
 }
 
 .block h2 {
-  margin-bottom: 15px;
+  /* 20px bottom margin */
+  margin-bottom: 20px;
+  /* Cyan color (#38bdf8) */
   color: #38bdf8;
+  /* 24px heading size */
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  /* 10px gap between icon and text */
+  gap: 10px;
 }
 
-/* Stack */
-.stack {
-  list-style: none;
+.icon {
+  /* 28px icon size */
+  font-size: 28px;
+  /* 3 second floating animation that repeats infinitely */
+  animation: float 3s ease-in-out infinite;
 }
 
-.stack li {
-  margin-bottom: 8px;
+@keyframes float {
+  /* Start and end at normal position */
+  0%, 100% { transform: translateY(0); }
+  /* Middle: float up 5px */
+  50% { transform: translateY(-5px); }
+}
+
+/* Stats Section */
+.stats {
+  display: grid;
+  /* Auto-fit columns with minimum 150px, maximum 1fr (equal width) */
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  /* 20px gap between stat cards */
+  gap: 20px;
+  /* 25px top margin to separate from text above */
+  margin-top: 25px;
+}
+
+.stat-item {
+  text-align: center;
+  /* 20px padding all around */
+  padding: 20px;
+  /* Cyan background at 5% opacity */
+  background: rgba(56, 189, 248, 0.05);
+  /* Cyan border at 20% opacity */
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  /* 8px rounded corners */
+  border-radius: 8px;
+  /* 0.3 second transition for hover effects */
+  transition: all 0.3s;
+}
+
+.stat-item:hover {
+  /* Darker cyan background at 10% opacity on hover */
+  background: rgba(56, 189, 248, 0.1);
+  /* Scale up to 105% on hover */
+  transform: scale(1.05);
+}
+
+.stat-number {
+  /* Large 32px number */
+  font-size: 32px;
+  font-weight: bold;
+  /* Light cyan color (#7dd3fc) */
+  color: #7dd3fc;
+  /* 5px bottom margin */
+  margin-bottom: 5px;
+}
+
+.stat-label {
+  /* Small 12px label text */
+  font-size: 12px;
+  /* Slate gray color (#94a3b8) */
+  color: #94a3b8;
+  text-transform: uppercase;
+  /* 1px spacing between letters */
+  letter-spacing: 1px;
+}
+
+/* Skills Section */
+.skills-grid {
+  display: flex;
+  /* Stack skills vertically */
+  flex-direction: column;
+  /* 20px gap between skill items */
+  gap: 20px;
+}
+
+.skill-item {
+  /* Cyan background at 5% opacity */
+  background: rgba(56, 189, 248, 0.05);
+  /* 15px padding all around */
+  padding: 15px;
+  /* 8px rounded corners */
+  border-radius: 8px;
+  /* 0.3 second transition for hover effects */
+  transition: all 0.3s;
+}
+
+.skill-item:hover {
+  /* Darker cyan background at 10% opacity on hover */
+  background: rgba(56, 189, 248, 0.1);
+  /* Move right 10px on hover */
+  transform: translateX(10px);
+}
+
+.skill-header {
+  display: flex;
+  /* Skill name on left, percentage on right */
+  justify-content: space-between;
+  /* 10px bottom margin before progress bar */
+  margin-bottom: 10px;
+  /* 14px font size */
+  font-size: 14px;
+}
+
+.skill-level {
+  /* Light cyan color (#7dd3fc) */
+  color: #7dd3fc;
+  font-weight: bold;
+}
+
+.skill-bar {
+  /* 8px tall progress bar */
+  height: 8px;
+  /* Slate gray background at 50% opacity (#334155) */
+  background: rgba(51, 65, 85, 0.5);
+  /* 10px rounded corners */
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.skill-progress {
+  /* Full height of container */
+  height: 100%;
+  /* Cyan gradient from #38bdf8 to #7dd3fc */
+  background: linear-gradient(90deg, #38bdf8, #7dd3fc);
+  /* 10px rounded corners */
+  border-radius: 10px;
+  /* 1.5 second fill animation */
+  animation: fillBar 1.5s ease-out;
+  /* Cyan glow: 10px blur at 50% opacity */
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+}
+
+@keyframes fillBar {
+  /* Start with 0 width (important overrides inline width temporarily) */
+  from { width: 0 !important; }
 }
 
 /* Projects */
 .projects {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  /* Auto-fit columns with minimum 250px, maximum 1fr (equal width) */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  /* 20px gap between project cards */
   gap: 20px;
 }
 
 .project {
+  /* 1px solid slate gray border (#334155) */
   border: 1px solid #334155;
-  padding: 15px;
-  border-radius: 6px;
+  /* 20px padding all around */
+  padding: 20px;
+  /* 10px rounded corners */
+  border-radius: 10px;
+  /* Gradient: cyan at 5% opacity to light cyan at 2% opacity */
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.05), rgba(125, 211, 252, 0.02));
+  /* 0.3 second transition for hover effects */
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.project::before {
+  content: "";
+  position: absolute;
+  /* Using inset shorthand: top 0, right auto, bottom 0, left -100% */
+  inset: 0 auto 0 -100%;
+  /* Full width and height */
+  width: 100%;
+  height: 100%;
+  /* Horizontal shimmer gradient: transparent -> cyan at 10% opacity -> transparent */
+  background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.1), transparent);
+  /* 0.5 second transition for shimmer effect */
+  transition: left 0.5s;
+}
+
+.project:hover::before {
+  /* Move shimmer effect across to right side (100%) */
+  left: 100%;
+}
+
+.project:hover {
+  /* Change border to cyan (#38bdf8) on hover */
+  border-color: #38bdf8;
+  /* Shadow: 0 horizontal, 8px vertical, 25px blur, cyan at 30% opacity */
+  box-shadow: 0 8px 25px rgba(56, 189, 248, 0.3);
+  /* Move up 8px on hover */
+  transform: translateY(-8px);
+}
+
+.project-icon {
+  /* 40px icon size */
+  font-size: 40px;
+  /* 15px bottom margin */
+  margin-bottom: 15px;
+  display: inline-block;
+  /* 4 second rotation animation that repeats infinitely */
+  animation: rotate 4s linear infinite;
+}
+
+@keyframes rotate {
+  /* No rotation most of the time (0-90% and 100%) */
+  0%, 90%, 100% { transform: rotate(0deg); }
+  /* Quick 15 degree tilt at 95% for playful effect */
+  95% { transform: rotate(15deg); }
 }
 
 .project h3 {
-  margin-bottom: 8px;
+  /* 10px bottom margin */
+  margin-bottom: 10px;
+  /* Light cyan color (#7dd3fc) */
   color: #7dd3fc;
+  /* 18px heading size */
+  font-size: 18px;
 }
 
 .project p {
+  /* 14px body text */
   font-size: 14px;
-  color: #cbd5f5;
+  /* Light slate color (#cbd5e1) */
+  color: #cbd5e1;
+  /* 15px bottom margin */
+  margin-bottom: 15px;
+  /* 1.6 line height for readability */
+  line-height: 1.6;
+}
+
+.project-tags {
+  display: flex;
+  /* 8px gap between tags */
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.project-tag {
+  /* Purple background at 20% opacity (#8b5cf6) */
+  background: rgba(139, 92, 246, 0.2);
+  /* Purple border at 40% opacity */
+  border: 1px solid rgba(139, 92, 246, 0.4);
+  /* 3px top/bottom, 10px left/right padding */
+  padding: 3px 10px;
+  /* 12px border radius for pill shape */
+  border-radius: 12px;
+  /* Small 11px font size */
+  font-size: 11px;
+  /* Light purple color (#c4b5fd) */
+  color: #c4b5fd;
+}
+
+/* Contact Section */
+.contact-grid {
+  display: grid;
+  /* Auto-fit columns with minimum 200px, maximum 1fr (equal width) */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  /* 20px gap between contact cards */
+  gap: 20px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  /* 15px gap between icon and text */
+  gap: 15px;
+  /* 20px padding all around */
+  padding: 20px;
+  /* Cyan background at 5% opacity */
+  background: rgba(56, 189, 248, 0.05);
+  /* Cyan border at 20% opacity */
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  /* 8px rounded corners */
+  border-radius: 8px;
+  /* 0.3 second transition for hover effects */
+  transition: all 0.3s;
+  /* Remove default link styling */
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.contact-item:hover {
+  /* Darker cyan background at 10% opacity on hover */
+  background: rgba(56, 189, 248, 0.1);
+  /* Change border to solid cyan (#38bdf8) on hover */
+  border-color: #38bdf8;
+  /* Scale up to 105% on hover */
+  transform: scale(1.05);
+}
+
+.contact-icon {
+  /* 32px icon size */
+  font-size: 32px;
+  /* 2 second bouncing animation that repeats infinitely */
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  /* Start and end at normal position */
+  0%, 100% { transform: translateY(0); }
+  /* Middle: bounce up 5px */
+  50% { transform: translateY(-5px); }
+}
+
+.contact-info {
+  /* Take remaining space */
+  flex: 1;
+}
+
+.contact-label {
+  /* Small 12px label text */
+  font-size: 12px;
+  /* Slate gray color (#94a3b8) */
+  color: #94a3b8;
+  text-transform: uppercase;
+  /* 1px spacing between letters */
+  letter-spacing: 1px;
+  /* 5px bottom margin */
+  margin-bottom: 5px;
+}
+
+.contact-value {
+  /* Light cyan color (#7dd3fc) */
+  color: #7dd3fc;
+  /* 14px value text */
+  font-size: 14px;
+  /* Break long text to prevent overflow */
+  word-break: break-all;
 }
 
 /* Footer */
 .footer {
   text-align: center;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  padding: 20px;
-  border-top: 1px solid #334155;
+  /* 50px top margin to separate from content */
+  margin-top: 50px;
+  /* 30px top/bottom, 20px left/right padding */
+  padding: 30px 20px;
+  /* 2px solid slate gray border (#334155) */
+  border-top: 2px solid #334155;
+  /* 14px font size */
   font-size: 14px;
+  /* Slate gray color (#94a3b8) */
   color: #94a3b8;
+  /* Gradient: dark navy at 80% opacity to slate at 40% opacity */
+  background: linear-gradient(to top, rgba(2, 6, 23, 0.8), rgba(15, 23, 42, 0.4));
+  /* 10px blur for glassmorphism effect */
+  backdrop-filter: blur(10px);
+}
+
+/* Responsive Design */
+/* Apply styles when screen width is 768px or less (tablets and mobile) */
+@media (max-width: 768px) {
+  .header-content {
+    /* Stack avatar and text vertically on mobile */
+    flex-direction: column;
+    text-align: center;
+  }
+  .header-text h1 {
+    /* Smaller 28px heading on mobile */
+    font-size: 28px;
+  }
+  .stats,
+  .projects,
+  .contact-grid {
+    /* Single column layout on mobile */
+    grid-template-columns: 1fr;
+  }
 }

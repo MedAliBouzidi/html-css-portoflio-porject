@@ -10,50 +10,159 @@
 <body>
 
   <header class="header">
-    <h1>Mannai Aweb</h1>
-    <p>Backend Developer</p>
-    <a href="index.html">← Back to Home</a>
+    <div class="header-content">
+      <div class="profile-badge">
+        <span class="avatar">MA</span>
+        <div class="status-indicator"></div>
+      </div>
+      <div class="header-text">
+        <h1>Mannai Aweb</h1>
+        <p class="role">Backend Developer</p>
+        <div class="tags">
+          <span class="tag">Java</span>
+          <span class="tag">Spring Boot</span>
+          <span class="tag">APIs</span>
+        </div>
+      </div>
+    </div>
+    <a href="index.html" class="back-btn">← Back to Home</a>
   </header>
 
   <main class="container">
 
-    <section class="block">
-      <h2>About</h2>
+    <section class="block about-section">
+      <h2><span class="icon">👤</span> About</h2>
       <p>
         Backend developer focused on building secure, scalable,
         and efficient server-side applications. Passionate about
         databases, APIs, and system architecture.
       </p>
+      <div class="stats">
+        <div class="stat-item">
+          <div class="stat-number">3+</div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">20+</div>
+          <div class="stat-label">Projects</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">100%</div>
+          <div class="stat-label">Dedicated</div>
+        </div>
+      </div>
     </section>
 
-    <section class="block">
-      <h2>Technical Stack</h2>
-      <ul class="stack">
-        <li>Java / Spring Boot</li>
-        <li>REST APIs</li>
-        <li>MySQL / PostgreSQL</li>
-        <li>Authentication & Security</li>
-        <li>Linux Basics</li>
-      </ul>
+    <section class="block skills-section">
+      <h2><span class="icon">⚙️</span> Technical Stack</h2>
+      <div class="skills-grid">
+        <div class="skill-item">
+          <div class="skill-header">
+            <span>Java / Spring Boot</span>
+            <span class="skill-level">90%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" style="width: 90%"></div>
+          </div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span>REST APIs</span>
+            <span class="skill-level">85%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" style="width: 85%"></div>
+          </div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span>MySQL / PostgreSQL</span>
+            <span class="skill-level">80%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" style="width: 80%"></div>
+          </div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span>Authentication & Security</span>
+            <span class="skill-level">75%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" style="width: 75%"></div>
+          </div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span>Linux Basics</span>
+            <span class="skill-level">70%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" style="width: 70%"></div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section class="block">
-      <h2>Backend Projects</h2>
+    <section class="block projects-section">
+      <h2><span class="icon">🚀</span> Backend Projects</h2>
       <div class="projects">
         <div class="project">
+          <div class="project-icon">📡</div>
           <h3>API Service</h3>
           <p>REST API with authentication and role management.</p>
+          <div class="project-tags">
+            <span class="project-tag">Java</span>
+            <span class="project-tag">JWT</span>
+          </div>
         </div>
 
         <div class="project">
+          <div class="project-icon">📅</div>
           <h3>Reservation System</h3>
           <p>Backend service for managing bookings and users.</p>
+          <div class="project-tags">
+            <span class="project-tag">Spring</span>
+            <span class="project-tag">MySQL</span>
+          </div>
         </div>
 
         <div class="project">
+          <div class="project-icon">💰</div>
           <h3>Finance Tracker</h3>
           <p>Microservice-based backend for expense tracking.</p>
+          <div class="project-tags">
+            <span class="project-tag">Microservices</span>
+            <span class="project-tag">API</span>
+          </div>
         </div>
+      </div>
+    </section>
+
+    <section class="block contact-section">
+      <h2><span class="icon">📬</span> Get In Touch</h2>
+      <div class="contact-grid">
+        <div class="contact-item">
+          <div class="contact-icon">📧</div>
+          <div class="contact-info">
+            <div class="contact-label">Email</div>
+            <div class="contact-value">awebmanaff@gmail.com</div>
+          </div>
+        </div>
+        <a href="https://linkedin.com/in/manai-aweb-16979b310" target="_blank" class="contact-item">
+          <div class="contact-icon">💼</div>
+          <div class="contact-info">
+            <div class="contact-label">LinkedIn</div>
+            <div class="contact-value">linkedin.com/in/Aweb</div>
+          </div>
+        </a>
+        <a href="https://github.com/AwebManai" target="_blank" class="contact-item">
+          <div class="contact-icon">🐙</div>
+          <div class="contact-info">
+            <div class="contact-label">GitHub</div>
+            <div class="contact-value">github.com/Aweb</div>
+          </div>
+        </a>
       </div>
     </section>
 
